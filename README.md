@@ -1,4 +1,3 @@
-HEAD
 # People & Management with Create React App 💯
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -82,16 +81,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <div style="display: inline_block"><br/>
     <img align="center" alt="Ubuntu" src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"/>
-    <img align="center" alt="Python" src=" 	https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+    <img align="center" alt="Python" src=" 	https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>    
     <img align="center" alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
-    <img align="center" alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
-    <img align="center" alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
-    <img align="center" alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/>
-    <img align="center" alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>
-    <img align="center" alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-    <img align="center" alt="Tailwind_CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-    <img align="center" alt="React_Native" src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-    <img align="center" alt="Netlify" src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>
+    <img align="center" alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>       
+    <img align="center" alt="TypeScript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>  
+    <img align="center" alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"/> 
+    <img align="center" alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>  
+    <img align="center" alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>   
+    <img align="center" alt="Tailwind_CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>  
+    <img align="center" alt="React_Native" src="https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>  
+    <img align="center" alt="Netlify" src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white"/>   
 </div><br/>
 
 ## Contato ✉️
@@ -107,6 +106,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
         <img alt="Marcell Souza / Linkedin" src="https://img.shields.io/badge/-Marcell Souza-ff59f8?style=flat&logo=Gmail&logoColor=fff" />
     </a>
 </p>
-=======
-# doutor-agenda
-souzamarcell doutor-agenda
