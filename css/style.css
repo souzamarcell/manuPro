@@ -20,6 +20,30 @@ button {
   cursor: pointer;
 }
 
+/* Principal */
+.container-principal {
+  width: 96%;
+  height: 96%;
+  border-radius: 10px;
+  background: yellowgreen;
+  background: white;
+}
+
+.header-principal {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 12px;
+}
+
+
+.header-principal span {
+  font-weight: 900;
+  font-size: 16px;
+  word-break: break-all;
+}
+
 .container {
   width: 90%;
   height: 80%;
@@ -52,19 +76,19 @@ button {
 
 .divTable {
   padding: 10px;
-  width: auto; 
-  height:inherit; 
+  width: auto;
+  height:inherit;
   overflow:auto;
 }
 
 .divTable::-webkit-scrollbar {
   width: 12px;
-  background-color: whitesmoke; 
+  background-color: whitesmoke;
 }
 
 .divTable::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: darkgray; 
+  background-color: darkgray;
 }
 
 table {
@@ -111,7 +135,7 @@ tbody tr td.acao {
   body {
     font-size: 10px;
   }
-  
+
   .header span {
     font-size: 15px;
   }
@@ -124,7 +148,7 @@ tbody tr td.acao {
   thead tr th.acao {
     width: auto!important;
   }
-  
+
   td button i {
     font-size: 20px!important;
   }
@@ -173,7 +197,7 @@ tbody tr td.acao {
 .modal input {
   width: 100%;
   outline: none;
-  padding: 5px 10px; 
+  padding: 5px 10px;
   width: 100%;
   margin-bottom: 20px;
   border-top: none;
@@ -185,8 +209,8 @@ tbody tr td.acao {
   width: 100%;
   margin: 10px auto;
   outline: none;
-  border-radius: 20px; 
-  padding: 5px 10px; 
+  border-radius: 20px;
+  padding: 5px 10px;
   width: 100%;
   border: none;
   background-color: rgb(57, 57, 226);

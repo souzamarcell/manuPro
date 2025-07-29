@@ -27,7 +27,7 @@ function openModal(edit = false, index = 0) {
     sFuncao.value = ''
     sSalario.value = ''
   }
-  
+
 }
 
 function editItem(index) {
@@ -47,7 +47,7 @@ function insertItem(item, index) {
   tr.innerHTML = `
     <td>${item.nome}</td>
     <td>${item.funcao}</td>
-    <td>R$ ${item.salario}</td>
+    <td>${item.salario}</td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
     </td>
@@ -59,7 +59,7 @@ function insertItem(item, index) {
 }
 
 btnSalvar.onclick = e => {
-  
+
   if (sNome.value == '' || sFuncao.value == '' || sSalario.value == '') {
     return
   }

@@ -1,0 +1,45 @@
+.botaoAcao {
+  display: block;
+  width: 100%;
+  margin: 10px auto;
+}
+
+
+.botaoAcao2 {
+  display: block;
+  width: 100%;
+  padding: 5px 7px;
+  margin: 10px auto;
+  background-color: rgb(226, 57, 65);
+  color: white;
+  text-align: center;
+  text-decoration: none; /* remove o underline do <a> */
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Principal */
+.container-add {
+  width: 96%;
+  height: 96%;
+  border-radius: 10px;
+  background: yellowgreen;
+  background: white;
+}
+
+.header-add {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 12px;
+}
+
+
+.header-add span {
+  font-weight: 900;
+  font-size: 16px;
+  word-break: break-all;
+}
