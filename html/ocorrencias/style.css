@@ -4,7 +4,6 @@
   margin: 10px auto;
 }
 
-
 .botaoAcao2 {
   display: block;
   width: 100%;
@@ -37,9 +36,40 @@
   margin: auto 12px;
 }
 
-
 .header-add span {
   font-weight: 900;
   font-size: 16px;
   word-break: break-all;
+}
+
+.acaoDuplo {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px !important;
+  /* background-color: rgb(226, 57, 65); */
+}
+
+.acaoDuplo i {
+  font-size: 14px !important;
+  color: white;
+  color: black;
+}
+
+.dataHora {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 9px !important;
+  color: rgb(116, 109, 109);
+}
+
+.funcao {
+  display: flex;
+  white-space: nowrap;
+}
+
+.nomes {
+  /* display: flex; */
+  white-space: nowrap;
 }

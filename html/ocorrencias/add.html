@@ -27,11 +27,14 @@
             <table>
               <thead>
                 <tr>
+                  <th>Data</th>
                   <th>Nome</th>
                   <th>Função</th>
                   <th>Ocorrência</th>
-                  <th class="acao"></th>
-                  <th class="acao"></th>
+
+                  <th class="acaoDuplo"></th>
+                  <th class="acaoDuplo"></th>
+
                 </tr>
               </thead>
               <tbody>
@@ -42,13 +45,37 @@
             <div class="modal">
               <form>
                 <label for="m-nome">Nome</label>
-                <input id="m-nome" type="text" required/>
+                <!-- <input id="m-nome" type="text" required/> -->
+                 <select id="m-nome" required>
+                  <option value="" disabled selected>Selecione um nome</option>
+                  <option>Walter</option>
+                  <option>Cleber</option>
+                  <option>Getulio</option>
+                  <option>Braga</option>
+                  <option>Emerson</option>
+                  <option>Miro</option>
+                  <option>Pepeu</option>
+                  <option>Josian</option>
+                </select>
 
-                <label for="m-funcao">Funcao</label>
-                <input id="m-funcao" type="text" required/>
+                <label for="m-funcao">Função</label>
+                <!-- <input id="m-funcao" type="text" required/> -->
+                <select id="m-funcao" required>
+                  <option value="" disabled selected>Selecione uma Função</option>
+                  <option>Mecânico</option>
+                  <option>Eletricista</option>
+                  <option>Utilidades</option>
+                </select>
 
                 <label for="m-salario">Ocorrência</label>
-                <input id="m-salario" type="text" required/>
+                <!-- <input id="m-salario" type="text" required/> -->
+                <select id="m-salario" required>
+                  <option value="" disabled selected>Selecione uma Ocorrência</option>
+                  <option>DS</option>
+                  <option>Chapa</option>
+                  <option>AR</option>
+                </select>
+
                 <button id="btnSalvar">Salvar</button>
               </form>
             </div>

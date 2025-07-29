@@ -11,7 +11,7 @@ let id
 function openModal(edit = false, index = 0) {
   modal.classList.add('active')
 
-  modal.onclick = e => {
+  modal.onclick = (e) => {
     if (e.target.className.indexOf('modal-container') !== -1) {
       modal.classList.remove('active')
     }
@@ -27,11 +27,9 @@ function openModal(edit = false, index = 0) {
     sFuncao.value = ''
     sSalario.value = ''
   }
-
 }
 
 function editItem(index) {
-
   openModal(true, index)
 }
 
@@ -43,35 +41,59 @@ function deleteItem(index) {
 
 function insertItem(item, index) {
   let tr = document.createElement('tr')
-
+  const partes = item.data.split('/') // ["29", "07", "2025"]
+  const dataFormatada = `${partes[0]}/${partes[1]}/${partes[2].slice(-2)}` // "29/07/25"
   tr.innerHTML = `
-    <td>${item.nome}</td>
-    <td>${item.funcao}</td>
-    <td>${item.salario}</td>
-    <td class="acao">
-      <button onclick="editItem(${index})"><i class='bx bx-edit' ></i></button>
+    <td class="dataHora">
+      ${dataFormatada}<br>
+      ${item.hora}
     </td>
-    <td class="acao">
-      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
+    <td class="nomes">${item.nome}</td>
+    <td class="funcao">${item.funcao}</td>
+    <td>${item.salario}</td>
+    <td class="acaoDuplo">
+      <button onclick="editItem(${index})">
+        <i class='bx bx-edit'></i>
+      </button>
+    </td>
+    <td class="acaoDuplo">
+      <button onclick="deleteItem(${index})">
+        <i class='bx bx-trash'></i>
+      </button>
     </td>
   `
   tbody.appendChild(tr)
 }
 
-btnSalvar.onclick = e => {
-
+btnSalvar.onclick = (e) => {
   if (sNome.value == '' || sFuncao.value == '' || sSalario.value == '') {
     return
   }
 
-  e.preventDefault();
+  e.preventDefault()
+
+  const agora = new Date()
+  const dataBrasil = agora.toLocaleDateString('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+  })
+  const horaBrasil = agora.toLocaleTimeString('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+  })
 
   if (id !== undefined) {
     itens[id].nome = sNome.value
     itens[id].funcao = sFuncao.value
     itens[id].salario = sSalario.value
+    itens[id].data = dataBrasil
+    itens[id].hora = horaBrasil
   } else {
-    itens.push({'nome': sNome.value, 'funcao': sFuncao.value, 'salario': sSalario.value})
+    itens.push({
+      nome: sNome.value,
+      funcao: sFuncao.value,
+      salario: sSalario.value,
+      data: dataBrasil,
+      hora: horaBrasil,
+    })
   }
 
   setItensBD()
@@ -87,7 +109,6 @@ function loadItens() {
   itens.forEach((item, index) => {
     insertItem(item, index)
   })
-
 }
 
 const getItensBD = () => JSON.parse(localStorage.getItem('dbfunc')) ?? []
