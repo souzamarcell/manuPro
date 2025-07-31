@@ -3,6 +3,7 @@ const tbody = document.querySelector('tbody')
 const sNome = document.querySelector('#m-nome')
 const sFuncao = document.querySelector('#m-funcao')
 const sSalario = document.querySelector('#m-salario')
+const sStatus = document.querySelector('#m-status')
 const btnSalvar = document.querySelector('#btnSalvar')
 
 let itens
@@ -17,15 +18,20 @@ function openModal(edit = false, index = 0) {
     }
   }
 
+  const statusSelect = document.getElementById('m-status')
+
   if (edit) {
     sNome.value = itens[index].nome
     sFuncao.value = itens[index].funcao
     sSalario.value = itens[index].salario
+    document.getElementById('m-status').value =
+      itens[index].status || 'andamento'
     id = index
   } else {
     sNome.value = ''
     sFuncao.value = ''
     sSalario.value = ''
+    document.getElementById('m-status').value = 'andamento' // valor padrão para novo
   }
 }
 
@@ -36,7 +42,9 @@ function editItem(index) {
 function deleteItem(index) {
   itens.splice(index, 1)
   setItensBD()
-  loadItens()
+  // loadItens()
+  itens = getItensBD()
+  btnOrdenarData.click()
 }
 
 function insertItem(item, index) {
@@ -50,28 +58,29 @@ function insertItem(item, index) {
 
   switch (nome) {
     case 'walter':
-      estiloLinha = 'background-color: #f8d7da;' // vermelho claro
+      estiloLinha = 'background-color: #FFB6C1;'
       break
     case 'cleber':
-      estiloLinha = 'background-color: #cce5ff;' // azul claro
+      estiloLinha = 'background-color: #cce5ff;'
       break
     case 'getulio':
-      estiloLinha = 'background-color: #d4edda;' // verde claro
+      estiloLinha = 'background-color: #ffe5b4;'
       break
     case 'braga':
-      estiloLinha = 'background-color: #ffe5b4;' // abóbora claro
+      estiloLinha = 'background-color: #ADFF2F;'
       break
     case 'emerson':
-      estiloLinha = 'background-color: #e2e3e5;' // cinza claro
+      estiloLinha = 'background-color: #90EE90;'
       break
     case 'miro':
-      estiloLinha = 'background-color: #000000; color: white;' // preto com texto branco
+      estiloLinha = 'background-color: #F4A460;' // preto com texto branco
+      // estiloLinha = 'background-color: #000000; color: white;' // preto com texto branco
       break
     case 'pepeu':
-      estiloLinha = 'background-color: #e6ccff;' // roxo claro
+      estiloLinha = 'background-color: #DEB887;'
       break
     case 'josian':
-      estiloLinha = 'background-color: #fff3cd;' // amarelo claro
+      estiloLinha = 'background-color: #fff3cd;'
       break
   }
 
@@ -89,27 +98,75 @@ function insertItem(item, index) {
     funcaoStyle = 'style="color: green; font-weight: bold;"'
   }
 
-  tr.innerHTML = `
-    <td class="dataHora">
-      ${dataFormatada}<br>
-      ${item.hora}
-    </td>
-    <td class="nomes">${item.nome}</td>
-    <td class="funcao" ${funcaoStyle}>${item.funcao}</td>
-    <td>${item.salario}</td>
-    <td class="acaoDuplo">
-      <button onclick="editItem(${index})">
-        <i class='bx bx-edit'></i>
-      </button>
-    </td>
-    <td class="acaoDuplo">
-      <button onclick="deleteItem(${index})">
-        <i class='bx bx-trash'></i>
-      </button>
-    </td>
-  `
+  const statusLabels = {
+    andamento: { color: '#007bff', emoji: '🟦', label: 'Andamento' },
+    pausado: { color: '#fd7e14', emoji: '⏸️', label: 'Pausado' },
+    concluido: { color: '#28a745', emoji: '✅', label: 'Concluído' },
+    cancelado: { color: '#dc3545', emoji: '❌', label: 'Cancelado' },
+  }
 
-  tbody.appendChild(tr)
+  const statusInfo = statusLabels[item.status] || {
+    color: '#000',
+    emoji: '',
+    label: item.status,
+  }
+
+  // Cria a linha de status (tr1)
+  const tr1 = document.createElement('tr')
+  tr1.setAttribute('style', estiloLinha)
+  tr1.innerHTML = `
+  <td class="nomes" colspan="7" style="font-weight: bold; font-size: 10px; color: ${statusInfo.color}; text-align: center;">
+    ${item.nome} - <i ${funcaoStyle}>${item.funcao}</i>
+  </td>
+`
+
+  // Cria a linha de dados normais (tr2)
+  const tr2 = document.createElement('tr')
+  tr2.setAttribute('style', estiloLinha)
+  tr2.innerHTML = `
+  <td class="dataHora">
+    ${dataFormatada}<br>
+    ${item.hora}
+  </td>
+
+  <td>${item.salario}</td>
+  <td>
+    <span style="font-weight: bold; font-size: 8px; color: ${statusInfo.color};">
+      ${statusInfo.emoji}<br>${statusInfo.label}
+    </span>
+  </td>
+  <td class="acaoDuplo">
+    <button onclick="editItemById(${item.id})">
+      <i class='bx bx-edit'></i>
+    </button>
+  </td>
+  <td class="acaoDuplo">
+    <button onclick="deleteItemById(${item.id})">
+      <i class='bx bx-trash'></i>
+    </button>
+  </td>
+`
+
+  // Adiciona ambas as linhas à tabela
+  tbody.appendChild(tr1)
+  tbody.appendChild(tr2)
+}
+
+function editItemById(itemId) {
+  const index = itens.findIndex((item) => item.id === itemId)
+  if (index !== -1) {
+    openModal(true, index)
+  }
+}
+
+function deleteItemById(itemId) {
+  const index = itens.findIndex((item) => item.id === itemId)
+  if (index !== -1) {
+    itens.splice(index, 1)
+    setItensBD()
+    itens = getItensBD()
+    btnOrdenarData.click()
+  }
 }
 
 btnSalvar.onclick = (e) => {
@@ -128,32 +185,44 @@ btnSalvar.onclick = (e) => {
   })
 
   if (id !== undefined) {
-    itens[id].nome = sNome.value
-    itens[id].funcao = sFuncao.value
-    itens[id].salario = sSalario.value
-    itens[id].data = dataBrasil
-    itens[id].hora = horaBrasil
+    const atual = itens[id]
+    itens[id] = {
+      ...atual,
+      nome: sNome.value,
+      funcao: sFuncao.value,
+      salario: sSalario.value,
+      // status: sStatus.value,
+      data: dataBrasil,
+      hora: horaBrasil,
+      status:
+        document.getElementById('m-status').value.toLowerCase() || atual.status,
+    }
   } else {
     itens.push({
+      id: Date.now(),
       nome: sNome.value,
       funcao: sFuncao.value,
       salario: sSalario.value,
       data: dataBrasil,
       hora: horaBrasil,
+      status: 'andamento', // ✅ adicionando status ao novo item
     })
   }
 
   setItensBD()
 
   modal.classList.remove('active')
-  loadItens()
+  // loadItens()
+  itens = getItensBD()
+  btnOrdenarData.click()
   id = undefined
 }
 
-function loadItens() {
+function loadItens(lista = null) {
   itens = getItensBD()
   tbody.innerHTML = ''
-  itens.forEach((item, index) => {
+  const dadosParaExibir = lista || itens
+  dadosParaExibir.forEach((item, index) => {
     insertItem(item, index)
   })
 }
@@ -162,6 +231,7 @@ const getItensBD = () => JSON.parse(localStorage.getItem('dbfunc')) ?? []
 const setItensBD = () => localStorage.setItem('dbfunc', JSON.stringify(itens))
 
 const nomeParaFuncao = {
+  Ubiratan: 'Supervisor',
   Walter: 'Mecânico',
   Cleber: 'Mecânico',
   Getulio: 'Mecânico',
@@ -171,6 +241,51 @@ const nomeParaFuncao = {
   Pepeu: 'Utilidades',
   Josian: 'Utilidades',
 }
+
+const btnOrdenarData = document.getElementById('btnOrdenarData')
+const btnOrdenarNome = document.getElementById('btnOrdenarNome')
+const btnOrdenarFuncao = document.getElementById('btnOrdenarFuncao')
+const btnOrdenarOcorrencia = document.getElementById('btnOrdenarOcorrencia')
+const btnOrdenarStatus = document.getElementById('btnOrdenarStatus')
+
+btnOrdenarData.addEventListener('click', () => {
+  const listaOrdenada = [...itens].sort((a, b) => {
+    const [diaA, mesA, anoA] = a.data.split('/')
+    const [diaB, mesB, anoB] = b.data.split('/')
+
+    const dataHoraA = new Date(`${anoA}-${mesA}-${diaA}T${a.hora}`)
+    const dataHoraB = new Date(`${anoB}-${mesB}-${diaB}T${b.hora}`)
+
+    return dataHoraA - dataHoraB
+  })
+  loadItens(listaOrdenada)
+})
+
+btnOrdenarNome.addEventListener('click', () => {
+  const listaOrdenada = [...itens].sort((a, b) => a.nome.localeCompare(b.nome))
+  loadItens(listaOrdenada)
+})
+
+btnOrdenarFuncao.addEventListener('click', () => {
+  const listaOrdenada = [...itens].sort((a, b) =>
+    a.funcao.localeCompare(b.funcao)
+  )
+  loadItens(listaOrdenada)
+})
+
+btnOrdenarOcorrencia.addEventListener('click', () => {
+  const listaOrdenada = [...itens].sort((a, b) => {
+    return a.salario.localeCompare(b.salario) // "salario" = ocorrência
+  })
+  loadItens(listaOrdenada)
+})
+
+btnOrdenarStatus.addEventListener('click', () => {
+  const listaOrdenada = [...itens].sort((a, b) => {
+    return a.status.localeCompare(b.status) // "status" = ocorrência
+  })
+  loadItens(listaOrdenada)
+})
 
 const nomeSelect = document.getElementById('m-nome')
 const funcaoSelect = document.getElementById('m-funcao')
@@ -189,4 +304,6 @@ nomeSelect.addEventListener('change', () => {
   }
 })
 
+itens = getItensBD()
+btnOrdenarData.click()
 loadItens()

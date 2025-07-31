@@ -12,6 +12,8 @@
   </head>
   <body>
     <div class="container-add">
+
+      <div></div>
       <div class="header-add">
         <span>Cadastro de Ocorrencias</span>
 
@@ -20,20 +22,27 @@
           <a href="../../index.html" class="botaoAcao2">Voltar</a>
         </div>
 
-
           </div>
+
+          <div class="botoes-ordenacao">
+            <button id="btnOrdenarData">Data</button>
+            <button id="btnOrdenarNome">Nome</button>
+            <button id="btnOrdenarFuncao">Função</button>
+            <button id="btnOrdenarOcorrencia">Ocorrência</button>
+            <button id="btnOrdenarStatus">Status</button>
+          </div>
+
           <div class="divTable">
             <table>
               <thead>
                 <tr>
                   <th>Data</th>
-                  <th>Nome</th>
-                  <th>Função</th>
+                  <!-- <th>Nome</th> -->
                   <th>Ocorrência</th>
-
+                  <th>Status</th>
+                  <th colspan="2">Ações</th>
                   <th class="acaoDuplo"></th>
                   <th class="acaoDuplo"></th>
-
                 </tr>
               </thead>
               <tbody>
@@ -44,9 +53,9 @@
             <div class="modal">
               <form>
                 <label for="m-nome">Nome</label>
-                <!-- <input id="m-nome" type="text" required/> -->
                  <select id="m-nome" required>
                   <option value="" disabled selected>Selecionar Nome</option>
+                  <option>Ubiratan</option>
                   <option>Walter</option>
                   <option>Cleber</option>
                   <option>Getulio</option>
@@ -58,21 +67,29 @@
                 </select>
 
                 <label for="m-funcao">Função</label>
-                <!-- <input id="m-funcao" type="text" required/> -->
                 <select id="m-funcao" required>
                   <option value="" disabled selected>Selecionar Função</option>
                   <option>Mecânico</option>
                   <option>Eletricista</option>
                   <option>Utilidades</option>
+                  <option>Supervisor</option>
                 </select>
 
                 <label for="m-salario">Ocorrência</label>
-                <!-- <input id="m-salario" type="text" required/> -->
                 <select id="m-salario" required>
                   <option value="" disabled selected>Selecionar Ocorrência</option>
                   <option>DS</option>
                   <option>Chapa</option>
                   <option>AR</option>
+                </select>
+
+                <label for="m-status">Status</label>
+                <select id="m-status">
+                   <option value="" disabled selected>Selecionar Status</option>
+                  <option value="andamento">Andamento</option>
+                  <option value="pausado">Pausado</option>
+                  <option value="concluido">Concluído</option>
+                  <option value="cancelado">Cancelado</option>
                 </select>
 
                 <button id="btnSalvar">Salvar</button>

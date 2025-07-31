@@ -98,8 +98,35 @@ select {
   background-size: 16px 16px;
 }
 
+/* ------------- */
+
 select:focus {
   border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
   outline: none;
+}
+
+.botoes-ordenacao {
+  display: flex;
+  justify-content: space-between; /* distribui igualmente */
+  align-items: center;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+.botoes-ordenacao button {
+  font-size: 9px;                     /* Fonte menor */
+  color: #fffacd;                      /* Amarelo claro vibrante */
+  background-color: #444;             /* Fundo escuro para contraste */
+  border: 1px solid #999;             /* Borda cinza suave */
+  padding: 3px 11px;
+  border-radius: 6px;
+  cursor: pointer;
+  /* font-weight: bold; */
+  transition: background-color 0.2s ease;
+}
+
+.botoes-ordenacao button:hover {
+  background-color: #666;             /* Escurece um pouco ao passar o mouse */
+  color: yellow;                      /* Amarelo ainda mais intenso */
 }
