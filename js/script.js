@@ -124,32 +124,38 @@ function insertItem(item, index) {
   const tr2 = document.createElement('tr')
   tr2.setAttribute('style', estiloLinha)
   tr2.innerHTML = `
-  <td class="dataHora">
-    ${dataFormatada}<br>
-    ${item.hora}
-  </td>
+  <td class="dataHora" style="width: 45px; text-align: center;">
+  ${dataFormatada}<br>${item.hora}
+</td>
 
-  <td>${item.salario}</td>
+  <td>Setor: Produção.<br>Equipamento:<br>${item.salario}</td>
   <td>
     <span style="font-weight: bold; font-size: 8px; color: ${statusInfo.color};">
       ${statusInfo.emoji}<br>${statusInfo.label}
     </span>
   </td>
-  <td class="acaoDuplo">
+  <td class="acaoDuplo" style="width: 1px; text-align: center;">
     <button onclick="editItemById(${item.id})">
       <i class='bx bx-edit'></i>
     </button>
   </td>
-  <td class="acaoDuplo">
+  <td class="acaoDuplo" style="width: 1px; text-align: center;">
     <button onclick="deleteItemById(${item.id})">
       <i class='bx bx-trash'></i>
     </button>
   </td>
 `
 
+  // Cria a linha em branco (tr3)
+  const tr3 = document.createElement('tr')
+  tr3.innerHTML = `
+    <td colspan="7" style="height: 0px; padding: 1px; border: none;"></td>
+  `
+
   // Adiciona ambas as linhas à tabela
   tbody.appendChild(tr1)
   tbody.appendChild(tr2)
+  tbody.appendChild(tr3)
 }
 
 function editItemById(itemId) {
